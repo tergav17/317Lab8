@@ -1,7 +1,7 @@
 package model;
 
 public enum KeypadButton {
-	BUTTON_MINUS,
+	BUTTON_NEGATE,
 	BUTTON_0,
 	BUTTON_1,
 	BUTTON_2,
@@ -22,5 +22,6 @@ public enum KeypadButton {
 	BUTTON_M_PLUS,
 	BUTTON_M_MINUS,
 	BUTTON_M_RECALL,
-	BUTTON_M_CLEAR
+	BUTTON_M_CLEAR,
+	BUTTON_EQUAL
 }

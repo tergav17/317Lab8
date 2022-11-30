@@ -7,11 +7,11 @@ import com.StringObserver;
 public class TextRegister {
 
 	private String value;
-	private boolean isError; 
+	private boolean isTempMessage; 
 	private ArrayList<StringObserver> observers = new ArrayList<>();
 	
 	public TextRegister() {
-		isError = false;
+		isTempMessage = false;
 		value = "";
 	}
 
@@ -36,38 +36,41 @@ public class TextRegister {
 	 * @param value Register value
 	 */
 	public void setValue(String value) {
-		if (isError) return;
+		if (isTempMessage) resetTempMessage();
+		
 		this.value = value;
 		update(value);
 	}
 	
 	public void addToValue(String addition) {
+		if (isTempMessage) resetTempMessage();
 		this.value += addition;
 		update(value);
 	}
 	
 	/*
 	 * Sets the error flag for the register
+	 * @param tempMessage The message to display
 	 */
-	public void setError() {
-		isError = true;
-		update("Error");
+	public void setTempMessage(String tempMessage) {
+		isTempMessage = true;
+		update(tempMessage);
 	}
 	
 	/*
-	 * Resets the error flag for the register
+	 * Resets the temporary flag for the register
 	 */
-	public void resetError() {
-		isError = false;
+	public void resetTempMessage() {
+		isTempMessage = false;
 		update(value);
 	}
 	
 	/**
-	 * Returns the status of the error flag
-	 * @return Error flag
+	 * Returns the status of the temporary flag
+	 * @return Temporary flag
 	 */
-	public boolean getError() {
-		return isError;
+	public boolean isTempMessage() {
+		return isTempMessage;
 	}
 	
 	/**
