@@ -4,7 +4,7 @@ public class CalculatorModel {
 
 	private TextRegister display;
 	
-	private double operand;
+	private double result;
 	
 	private enum Function {
 		ADD,
@@ -30,49 +30,36 @@ public class CalculatorModel {
 	public void clearAll() {
 		display.setValue("0");
 		lastOp = Function.ADD;
-		operand = 0;
+		result = 0;
 	}
 	
 	private void doFunction(Function fun) {
-		double displayValue = 0;
+		double operand = 0;
 		
+		// Parse display
 		try {
-			displayValue = parseDisplay();
+			operand = parseDisplay();
 		} catch (Exception e) {
-			
+			display.setValue("0");
+			display.setTempMessage("Error");
 		}
 		
 		switch (lastOp) {
-		case ADD:
-			break;
-		case DIV:
-			break;
-		case EQU:
-			break;
-		case MUL:
-			break;
-		case NEG:
-			break;
-		case SQR:
-			break;
-		case SRT:
-			break;
-		case SUB:
-			break;
-		default:
-			break;
-	}
-		
-		switch (fun) {
 			case ADD:
+				result = result + operand;
 				break;
 			case DIV:
+				result = result / operand;
 				break;
 			case EQU:
+				result = operand;
 				break;
 			case MUL:
+				result = result * operand;
 				break;
 			case NEG:
+				if (display.isTempMessage()) result = -result;
+				else result = -operand;
 				break;
 			case SQR:
 				break;
@@ -83,6 +70,9 @@ public class CalculatorModel {
 			default:
 				break;
 		}
+		
+		display.setValue("0");
+		display.setTempMessage(String.valueOf(result));
 	}
 	
 	private double parseDisplay() {

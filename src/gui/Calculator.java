@@ -172,7 +172,122 @@ public class Calculator implements StringObserver {
             	}
             );
         
+        this.add.addActionListener(
+            	new ActionListener(){
+            		@Override
+                    public void actionPerformed(ActionEvent item) {
+            			model.pressButton(KeypadButton.BUTTON_ADD);
+                    }
+            	}
+            );
         
+        this.sub.addActionListener(
+            	new ActionListener(){
+            		@Override
+                    public void actionPerformed(ActionEvent item) {
+            			model.pressButton(KeypadButton.BUTTON_SUB);
+                    }
+            	}
+            );
+        
+        this.mult.addActionListener(
+            	new ActionListener(){
+            		@Override
+                    public void actionPerformed(ActionEvent item) {
+            			model.pressButton(KeypadButton.BUTTON_MUL);
+                    }
+            	}
+            );
+        
+        this.div.addActionListener(
+            	new ActionListener(){
+            		@Override
+                    public void actionPerformed(ActionEvent item) {
+            			model.pressButton(KeypadButton.BUTTON_DIV);
+                    }
+            	}
+            );
+        
+        this.decimal.addActionListener(
+            	new ActionListener(){
+            		@Override
+                    public void actionPerformed(ActionEvent item) {
+            			model.pressButton(KeypadButton.BUTTON_DOT);
+                    }
+            	}
+            );
+        
+        this.sqr.addActionListener(
+            	new ActionListener(){
+            		@Override
+                    public void actionPerformed(ActionEvent item) {
+            			model.pressButton(KeypadButton.BUTTON_SQR);
+                    }
+            	}
+            );
+        
+        this.sqrt.addActionListener(
+            	new ActionListener(){
+            		@Override
+                    public void actionPerformed(ActionEvent item) {
+            			model.pressButton(KeypadButton.BUTTON_SRT);
+                    }
+            	}
+            );
+        
+        this.delete.addActionListener(
+            	new ActionListener(){
+            		@Override
+                    public void actionPerformed(ActionEvent item) {
+            			model.pressButton(KeypadButton.BUTTON_DEL);
+                    }
+            	}
+            );
+        
+        this.clear.addActionListener(
+            	new ActionListener(){
+            		@Override
+                    public void actionPerformed(ActionEvent item) {
+            			model.pressButton(KeypadButton.BUTTON_CLS);
+                    }
+            	}
+            );
+        
+        this.equals.addActionListener(
+            	new ActionListener(){
+            		@Override
+                    public void actionPerformed(ActionEvent item) {
+            			model.pressButton(KeypadButton.BUTTON_EQUAL);
+                    }
+            	}
+            );
+        
+        this.mem.addActionListener(
+            	new ActionListener(){
+            		@Override
+                    public void actionPerformed(ActionEvent item) {
+            			model.pressButton(KeypadButton.BUTTON_M_RECALL);
+                    }
+            	}
+            );
+        
+        this.memPlus.addActionListener(
+            	new ActionListener(){
+            		@Override
+                    public void actionPerformed(ActionEvent item) {
+            			model.pressButton(KeypadButton.BUTTON_M_PLUS);
+                    }
+            	}
+            );
+        
+        this.memMin.addActionListener(
+            	new ActionListener(){
+            		@Override
+                    public void actionPerformed(ActionEvent item) {
+            			model.pressButton(KeypadButton.BUTTON_M_MINUS);
+                    }
+            	}
+            );
         /*
          * And so on...  TODO
          */
