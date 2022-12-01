@@ -73,10 +73,10 @@ public class CalculatorModel {
 			case NEG:
 				result = -result;
 				break;
-			case SQR:
+			case SRT:
 				result = Math.sqrt(result);
 				break;
-			case SRT:
+			case SQR:
 				result = result * result;
 				break;
 			case SUB:
@@ -108,10 +108,10 @@ public class CalculatorModel {
 			}
 			
 			// Do checking for leading zeros
-			while (display.getValue().startsWith("0")) {
+			if (display.getValue().startsWith("0") && !display.getValue().startsWith("0.")) {
 				display.setValue(display.getValue().substring(1));
 			}
-			while (display.getValue().startsWith("-0")) {
+			if (display.getValue().startsWith("-0") && !display.getValue().startsWith("-0.")) {
 				display.setValue("-" + display.getValue().substring(2));
 			}
 		}
