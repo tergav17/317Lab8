@@ -13,10 +13,10 @@ import java.awt.event.ActionEvent;
 
 public class Calculator implements StringObserver {
 	
-	public JFrame frame = new JFrame("Calculator 317");
+	public JFrame frame = new JFrame();
     JPanel panel = new JPanel(new FlowLayout());
     JPanel screen = new JPanel(new BorderLayout());
-    JTextField text = new JTextField(20);
+    JTextField text = new JTextField(15);
     
     JButton num0 = new JButton("0");
     JButton num1 = new JButton("1");
@@ -37,15 +37,16 @@ public class Calculator implements StringObserver {
     JButton sqr = new JButton("sqr");
     JButton sqrt = new JButton("sqrt");
     
-    JButton mem = new JButton("M");
-    JButton memPlus = new JButton("M+");
-    JButton memMin = new JButton("M-");
+    JButton mem = new JButton("  M  ");
+    JButton memPlus = new JButton("   M+   ");
+    JButton memMin = new JButton("   M-   ");
     
     JButton equals = new JButton("=");
     JButton delete = new JButton("del");
     JButton clear = new JButton("C");
     JButton decimal = new JButton(".");
     JButton neg = new JButton("neg");
+    JButton memClr = new JButton(" MemC ");
     
     private CalculatorModel model;
     
@@ -54,42 +55,49 @@ public class Calculator implements StringObserver {
     	this.model = model;
     	
     	frame.setVisible(true); 
-        frame.setSize(250,250);
+        frame.setSize(180,345);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         
         text.setSize(500, 30);
         panel.add(text, BorderLayout.NORTH);
         
-        panel.add(num0);
+        
         panel.add(num1);
         panel.add(num2);
         panel.add(num3);
-        panel.add(num4);
         
+        panel.add(num4);
         panel.add(num5);
         panel.add(num6);
+        
         panel.add(num7);
         panel.add(num8);
         panel.add(num9);
         
-        panel.add(add);
-        panel.add(sub);
-        panel.add(mult);
-        panel.add(div);
+        panel.add(num0);
+        panel.add(neg);
         panel.add(decimal);
         
+        panel.add(add);
+        panel.add(sub);
         panel.add(sqr);
+        
+        panel.add(mult);
+        panel.add(div);
         panel.add(sqrt);
-        panel.add(delete);
-        panel.add(clear);
         
         panel.add(mem);
+        panel.add(memClr);
+        
         panel.add(memPlus);
         panel.add(memMin);
-        panel.add(neg);
         
+        panel.add(delete);
+        panel.add(clear);
         panel.add(equals);
+        
+        
         
         this.num0.addActionListener(
             	new ActionListener(){
