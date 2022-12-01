@@ -1,12 +1,25 @@
 package main;
 
+import gui.Calculator;
+import model.CalculatorModel;
+
 public class Main {
 	
-	public static void main() {
+	public static void main(String[] args) {
 		System.out.println("Welcome to the calulator!");
 		
-		gui.calc frame = new gui.calc();
-        frame.frame.setVisible(true);
+		// Create calculate model
+		CalculatorModel model = new CalculatorModel();
+		
+		// Create GUI
+		Calculator calc = new Calculator(model);
+		calc.frame.setVisible(true);
+		
+		// Bind calc to model
+		model.getDisplay().addObserver(calc);
+		
+		// Clear all
+		model.clearAll();
         
 	}
 }

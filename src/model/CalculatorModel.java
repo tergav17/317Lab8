@@ -34,6 +34,35 @@ public class CalculatorModel {
 	}
 	
 	private void doFunction(Function fun) {
+		double displayValue = 0;
+		
+		try {
+			displayValue = parseDisplay();
+		} catch (Exception e) {
+			
+		}
+		
+		switch (lastOp) {
+		case ADD:
+			break;
+		case DIV:
+			break;
+		case EQU:
+			break;
+		case MUL:
+			break;
+		case NEG:
+			break;
+		case SQR:
+			break;
+		case SRT:
+			break;
+		case SUB:
+			break;
+		default:
+			break;
+	}
+		
 		switch (fun) {
 			case ADD:
 				break;
@@ -56,6 +85,10 @@ public class CalculatorModel {
 		}
 	}
 	
+	private double parseDisplay() {
+		return Double.valueOf(display.getValue());
+	}
+	
 	/**
 	 * Presses a button on the virtual calculator
 	 * @param button Button to press
@@ -69,10 +102,10 @@ public class CalculatorModel {
 			}
 			
 			// Do checking for leading zeros
-			if (display.getValue().startsWith("0")) {
+			while (display.getValue().startsWith("0")) {
 				display.setValue(display.getValue().substring(1));
 			}
-			if (display.getValue().startsWith("-0")) {
+			while (display.getValue().startsWith("-0")) {
 				display.setValue("-" + display.getValue().substring(2));
 			}
 		}
@@ -155,7 +188,6 @@ public class CalculatorModel {
 				break;
 				
 			case BUTTON_M_MINUS:
-				
 				break;
 				
 			case BUTTON_M_PLUS:

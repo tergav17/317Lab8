@@ -1,11 +1,17 @@
 package gui;
 
 import javax.swing.*;
+
+import com.StringObserver;
+
+import model.CalculatorModel;
+import model.KeypadButton;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class calc extends main.Main{
+public class Calculator implements StringObserver {
 	
 	public JFrame frame = new JFrame("Calculator 317");
     JPanel panel = new JPanel(new FlowLayout());
@@ -40,13 +46,19 @@ public class calc extends main.Main{
     JButton clear = new JButton("C");
     JButton decimal = new JButton(".");
     
-    public calc() {
+    private CalculatorModel model;
+    
+    public Calculator(CalculatorModel model) {
+    	
+    	this.model = model;
+    	
     	frame.setVisible(true); 
         frame.setSize(500,300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         
-        screen.add(text, BorderLayout.NORTH);
+        text.setSize(500, 30);
+        panel.add(text, BorderLayout.NORTH);
         
         panel.add(num0);
         panel.add(num1);
@@ -80,7 +92,7 @@ public class calc extends main.Main{
             	new ActionListener(){
             		@Override
                     public void actionPerformed(ActionEvent item) {
-                    	//What happens when the button is pressed
+                    	model.pressButton(KeypadButton.BUTTON_0);
                     }
             	}
             );
@@ -88,7 +100,7 @@ public class calc extends main.Main{
             	new ActionListener(){
             		@Override
                     public void actionPerformed(ActionEvent item) {
-                    	//What happens when the button is pressed
+            			model.pressButton(KeypadButton.BUTTON_1);
                     }
             	}
             );
@@ -96,7 +108,7 @@ public class calc extends main.Main{
             	new ActionListener(){
             		@Override
                     public void actionPerformed(ActionEvent item) {
-                    	//What happens when the button is pressed
+            			model.pressButton(KeypadButton.BUTTON_2);
                     }
             	}
             );
@@ -104,7 +116,7 @@ public class calc extends main.Main{
             	new ActionListener(){
             		@Override
                     public void actionPerformed(ActionEvent item) {
-                    	//What happens when the button is pressed
+            			model.pressButton(KeypadButton.BUTTON_3);
                     }
             	}
             );
@@ -112,7 +124,7 @@ public class calc extends main.Main{
             	new ActionListener(){
             		@Override
                     public void actionPerformed(ActionEvent item) {
-                    	//What happens when the button is pressed
+            			model.pressButton(KeypadButton.BUTTON_4);
                     }
             	}
             );
@@ -120,7 +132,7 @@ public class calc extends main.Main{
             	new ActionListener(){
             		@Override
                     public void actionPerformed(ActionEvent item) {
-                    	//What happens when the button is pressed
+            			model.pressButton(KeypadButton.BUTTON_5);
                     }
             	}
             );
@@ -128,7 +140,7 @@ public class calc extends main.Main{
             	new ActionListener(){
             		@Override
                     public void actionPerformed(ActionEvent item) {
-                    	//What happens when the button is pressed
+            			model.pressButton(KeypadButton.BUTTON_5);
                     }
             	}
             );
@@ -136,7 +148,7 @@ public class calc extends main.Main{
             	new ActionListener(){
             		@Override
                     public void actionPerformed(ActionEvent item) {
-                    	//What happens when the button is pressed
+            			model.pressButton(KeypadButton.BUTTON_6);
                     }
             	}
             );
@@ -144,7 +156,7 @@ public class calc extends main.Main{
             	new ActionListener(){
             		@Override
                     public void actionPerformed(ActionEvent item) {
-                    	//What happens when the button is pressed
+            			model.pressButton(KeypadButton.BUTTON_7);
                     }
             	}
             );
@@ -152,7 +164,7 @@ public class calc extends main.Main{
             	new ActionListener(){
             		@Override
                     public void actionPerformed(ActionEvent item) {
-                    	//What happens when the button is pressed
+            			model.pressButton(KeypadButton.BUTTON_8);
                     }
             	}
             );
@@ -164,6 +176,13 @@ public class calc extends main.Main{
 
         
     }
+
+	@Override
+	public void update(String d) {
+		// Set the text of text to the string during a update event
+		text.setText(d);
+		
+	}
     
 
 }
