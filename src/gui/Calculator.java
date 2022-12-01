@@ -16,7 +16,7 @@ public class Calculator implements StringObserver {
 	public JFrame frame = new JFrame("Calculator 317");
     JPanel panel = new JPanel(new FlowLayout());
     JPanel screen = new JPanel(new BorderLayout());
-    JTextField text = new JTextField();
+    JTextField text = new JTextField(20);
     
     JButton num0 = new JButton("0");
     JButton num1 = new JButton("1");
@@ -45,6 +45,7 @@ public class Calculator implements StringObserver {
     JButton delete = new JButton("del");
     JButton clear = new JButton("C");
     JButton decimal = new JButton(".");
+    JButton neg = new JButton("neg");
     
     private CalculatorModel model;
     
@@ -53,7 +54,7 @@ public class Calculator implements StringObserver {
     	this.model = model;
     	
     	frame.setVisible(true); 
-        frame.setSize(500,300);
+        frame.setSize(250,250);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         
@@ -65,6 +66,7 @@ public class Calculator implements StringObserver {
         panel.add(num2);
         panel.add(num3);
         panel.add(num4);
+        
         panel.add(num5);
         panel.add(num6);
         panel.add(num7);
@@ -75,17 +77,18 @@ public class Calculator implements StringObserver {
         panel.add(sub);
         panel.add(mult);
         panel.add(div);
+        panel.add(decimal);
         
         panel.add(sqr);
         panel.add(sqrt);
+        panel.add(delete);
+        panel.add(clear);
         
         panel.add(mem);
         panel.add(memPlus);
         panel.add(memMin);
+        panel.add(neg);
         
-        panel.add(delete);
-        panel.add(clear);
-        panel.add(decimal);
         panel.add(equals);
         
         this.num0.addActionListener(
@@ -140,7 +143,7 @@ public class Calculator implements StringObserver {
             	new ActionListener(){
             		@Override
                     public void actionPerformed(ActionEvent item) {
-            			model.pressButton(KeypadButton.BUTTON_5);
+            			model.pressButton(KeypadButton.BUTTON_6);
                     }
             	}
             );
@@ -148,7 +151,7 @@ public class Calculator implements StringObserver {
             	new ActionListener(){
             		@Override
                     public void actionPerformed(ActionEvent item) {
-            			model.pressButton(KeypadButton.BUTTON_6);
+            			model.pressButton(KeypadButton.BUTTON_7);
                     }
             	}
             );
@@ -156,7 +159,7 @@ public class Calculator implements StringObserver {
             	new ActionListener(){
             		@Override
                     public void actionPerformed(ActionEvent item) {
-            			model.pressButton(KeypadButton.BUTTON_7);
+            			model.pressButton(KeypadButton.BUTTON_8);
                     }
             	}
             );
@@ -164,7 +167,7 @@ public class Calculator implements StringObserver {
             	new ActionListener(){
             		@Override
                     public void actionPerformed(ActionEvent item) {
-            			model.pressButton(KeypadButton.BUTTON_8);
+            			model.pressButton(KeypadButton.BUTTON_9);
                     }
             	}
             );
