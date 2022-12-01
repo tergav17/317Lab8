@@ -58,6 +58,10 @@ public class CalculatorModel {
 				result = result + operand;
 				break;
 			case DIV:
+				if (operand == 0.0) {
+					display.setTempMessage("Error");
+					return;
+				}
 				result = result / operand;
 				break;
 			case EQU:
