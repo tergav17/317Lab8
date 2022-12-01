@@ -29,7 +29,7 @@ public class CalculatorModel {
 	 */
 	public void clearAll() {
 		display.setValue("0");
-		lastOp = Function.ADD;
+		lastOp = Function.EQU;
 		result = 0;
 	}
 	
@@ -42,6 +42,12 @@ public class CalculatorModel {
 		} catch (Exception e) {
 			display.setValue("0");
 			display.setTempMessage("Error");
+		}
+		
+		// Check for single argument operations
+		if (fun == Function.NEG || fun == Function.SQR || fun == Function.SRT) {
+			lastOp = fun;
+			if (!display.isTempMessage()) result = operand;
 		}
 		
 		switch (lastOp) {
@@ -58,19 +64,22 @@ public class CalculatorModel {
 				result = result * operand;
 				break;
 			case NEG:
-				if (display.isTempMessage()) result = -result;
-				else result = -operand;
+				result = -result;
 				break;
 			case SQR:
+				result = Math.sqrt(result);
 				break;
 			case SRT:
+				result = result * result;
 				break;
 			case SUB:
+				result = result - operand;
 				break;
 			default:
 				break;
 		}
 		
+		if (fun != Function.EQU) lastOp = fun;
 		display.setValue("0");
 		display.setTempMessage(String.valueOf(result));
 	}
@@ -172,9 +181,6 @@ public class CalculatorModel {
 				break;
 				
 			case BUTTON_M_CLEAR:
-				// Press the clear button twice to clear all
-				if (display.getValue().length() != 0) display.setValue("");
-				else clearAll();
 				break;
 				
 			case BUTTON_M_MINUS:
@@ -200,6 +206,16 @@ public class CalculatorModel {
 				
 			case BUTTON_EQUAL:
 				doFunction(Function.EQU);
+				break;
+				
+			case BUTTON_CLS:
+				// Press the clear button twice to clear all
+				if (display.getValue().length() != 0) display.setValue("0");
+				else clearAll();
+				break;
+				
+			case BUTTON_DEL:
+				display.setValue(display.getValue().substring(0, display.getValue().length() - 1));
 				break;
 				
 			default:

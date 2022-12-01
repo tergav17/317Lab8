@@ -180,6 +180,15 @@ public class Calculator implements StringObserver {
             	}
             );
         
+        this.neg.addActionListener(
+            	new ActionListener(){
+            		@Override
+                    public void actionPerformed(ActionEvent item) {
+            			model.pressButton(KeypadButton.BUTTON_NEGATE);
+                    }
+            	}
+            );
+        
         this.add.addActionListener(
             	new ActionListener(){
             		@Override
@@ -293,6 +302,15 @@ public class Calculator implements StringObserver {
             		@Override
                     public void actionPerformed(ActionEvent item) {
             			model.pressButton(KeypadButton.BUTTON_M_MINUS);
+                    }
+            	}
+            );
+        
+        this.memClr.addActionListener(
+            	new ActionListener(){
+            		@Override
+                    public void actionPerformed(ActionEvent item) {
+            			model.pressButton(KeypadButton.BUTTON_M_CLEAR);
                     }
             	}
             );
