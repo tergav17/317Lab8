@@ -50,9 +50,9 @@ public class Calculator implements StringObserver {
     
     private CalculatorModel model;
     
-    public Calculator(CalculatorModel model) {
+    public Calculator(CalculatorModel calcModel) {
     	
-    	this.model = model;
+    	this.model = calcModel;
     	
     	frame.setVisible(true); 
         frame.setSize(180,345);

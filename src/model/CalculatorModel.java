@@ -6,6 +6,8 @@ public class CalculatorModel {
 	
 	private double result;
 	
+	private double memory;
+	
 	private enum Function {
 		ADD,
 		SUB,
@@ -21,6 +23,7 @@ public class CalculatorModel {
 	
 	public CalculatorModel() {
 		display = new TextRegister();
+		memory = 0;
 		clearAll();
 	}
 
@@ -181,15 +184,22 @@ public class CalculatorModel {
 				break;
 				
 			case BUTTON_M_CLEAR:
+				memory = 0;
 				break;
 				
 			case BUTTON_M_MINUS:
+				if (!display.isTempMessage()) display.setTempMessage("Error");
+				memory -= result;
+				
 				break;
 				
 			case BUTTON_M_PLUS:
+				if (!display.isTempMessage()) display.setTempMessage("Error");
+				memory += result;
 				break;
 				
 			case BUTTON_M_RECALL:
+				display.setValue(String.valueOf(memory));
 				break;
 				
 			case BUTTON_SQR:
@@ -210,7 +220,7 @@ public class CalculatorModel {
 				
 			case BUTTON_CLS:
 				// Press the clear button twice to clear all
-				if (display.getValue().length() != 0) display.setValue("0");
+				if (!display.getValue().equals("0")) display.setValue("0");
 				else clearAll();
 				break;
 				
